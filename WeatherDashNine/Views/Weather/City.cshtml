@@ -1,0 +1,54 @@
+﻿@model WeatherDashNine.Models.CityModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "City";
+}
+
+<div class="container">
+    <div class="container">
+        @if (Model != null)
+        {
+            <h1 class="display-4">5 Day Weather Forecast for @Model.city.name</h1>
+            <h2 class="display-8">   For Current Hour</h2>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>date</th>
+                        <th>temp</th>
+                        <th>feels_like</th>
+                        <th>icon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.list.Count; i += 8)
+                    {
+                        var forecast = Model.list[i];
+                        <tr>
+                            <td>@(TimeUtils.UnixTimeStampToDateTime(forecast.dt).ToLocalTime())</td>
+                            <td>@forecast.main.temp F°</td>
+
+                            <td>@forecast.main.feels_like</td>
+                            <td><img src="https://www.openweathermap.org/img/wn/@(forecast.weather[0].icon).png" style="width:32px" /></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                <strong>Sorry!! Invalid Entry...</strong>
+            </div>       
+        }
+    </div>
+
+    <div class="container">
+        <div class="form-group col-md-offset-3 col-md-5">
+            <form method="get">
+                <button asp-controller="Weather" asp-action="SearchCity" class="btn btn-success">Return</button>
+            </form>
+        </div>
+    </div>
+</div>
