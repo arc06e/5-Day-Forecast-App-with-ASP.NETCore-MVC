@@ -6,7 +6,7 @@ Welcome to my 5-Day Weather Forecast App! This project was my gateway into the C
 Model-View-Controller design patterns. 
 
 ## Current Features
-* Connects with OpenWeatherMap's web API to pull and display 5 days' worth of weather forecast data
+* Connects with OpenWeatherMap's web API to pull and display 5 days' worth of weather forecast data from desired city
   * Implements IHttpClientFactory with Repository pattern
 
 ## Intended Improvements
