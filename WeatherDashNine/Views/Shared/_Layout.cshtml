@@ -6,6 +6,10 @@
     <title>@ViewData["Title"] - Adam's Weather Forecast App</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        td { border-top: 0 !important; }
+        tr:nth-child(even) { background: #EEEEEE }
+    </style>
 </head>
 <body>
     <header>
@@ -43,6 +47,18 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        function ActivatePlacesSearch()
+        {
+            var input = document.getElementById('autocomplete');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+        }
+    </script>
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtO1BRPJxjr3TtoOc-uIgoYjaU_Tm1iUE&libraries=places&callback=ActivatePlacesSearch">
+    </script>
+
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

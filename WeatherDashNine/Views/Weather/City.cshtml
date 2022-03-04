@@ -15,10 +15,12 @@
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th>date</th>
-                        <th>temp</th>
-                        <th>feels_like</th>
-                        <th>icon</th>
+                        <th>Date</th>
+                        <th>Temp(F°)</th>
+                        <th>Low(F°)</th>
+                        <th>High(F°)</th>
+                        <th>Feels Like(F°)</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,11 +28,24 @@
                     {
                         var forecast = Model.list[i];
                         <tr>
-                            <td>@(TimeUtils.UnixTimeStampToDateTime(forecast.dt).ToLocalTime())</td>
-                            <td>@forecast.main.temp F°</td>
+                            <td>@(TimeUtils.UnixTimeStampToDateTime(forecast.dt).ToShortDateString()), 
+                                @(TimeUtils.UnixTimeStampToDateTime(forecast.dt).ToShortTimeString())
+                            </td>
+                            
+                            @*<td>@(TimeUtils.UnixTimeStampToDateTime(forecast.dt).ToLocalTime()</td> *@
 
-                            <td>@forecast.main.feels_like</td>
-                            <td><img src="https://www.openweathermap.org/img/wn/@(forecast.weather[0].icon).png" style="width:32px" /></td>
+                            <td>@Math.Round(@forecast.main.temp)</td>
+                            <td>@Math.Round(@forecast.main.temp_min)</td>
+                            <td>@Math.Round(@forecast.main.temp_max)</td>
+                            <td>@Math.Round(@forecast.main.feels_like)</td>
+                            <td style="text-align: center;">
+                                <div style="
+                                    background-color: #dee2e6;   
+                                    border-radius: 5px;
+                                    display: inline-block;">
+                                    <img src="https://www.openweathermap.org/img/wn/@(forecast.weather[0].icon).png" style="width:32px" />
+                                </div>  
+                            </td>
                         </tr>
                     }
                 </tbody>
