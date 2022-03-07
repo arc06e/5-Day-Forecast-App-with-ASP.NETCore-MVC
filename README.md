@@ -8,6 +8,7 @@ Model-View-Controller design patterns.
 ## Current Features
 * Connects with OpenWeatherMap's web API to pull and display 5 days' worth of weather forecast data from desired city
   * Implements IHttpClientFactory with Repository pattern
+  * Utilizes Google Maps JavaScript API to autocomplete search field
 
 ## Intended Improvements
 I would like to expand this project by incorporating more data from other web APIs that would display information like popular restaurants in the area or local public parks. 
