@@ -26,6 +26,8 @@ namespace WeatherDashNine.Controllers
         
         public async Task<IActionResult> City(CityModel cityNameFromView)
         {
+             
+
             var cityDetail = await _forecastRepository.GetCityForecastAsync(cityNameFromView.Name);
             return View(cityDetail);
         }

@@ -10,8 +10,8 @@
     <div class="container">
         @if (Model != null)
         {
-            <h1 class="display-4">5 Day Weather Forecast for @Model.city.name</h1>
-            <h2 class="display-8">   For Current Hour</h2>
+            <h1 class="display-5">5 Day Weather Forecast for @Model.Name</h1>
+            <h2 class="display-9">For Current Hour</h2>
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -20,30 +20,29 @@
                         <th>Low(F°)</th>
                         <th>High(F°)</th>
                         <th>Feels Like(F°)</th>
+                        <th>Humidity(F°)</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for (int i = 0; i < Model.list.Count; i += 8)
+                    @for (int i = 0; i < Model.List.Count; i += 8)
                     {
-                        var forecast = Model.list[i];
+                        var forecast = Model.List[i];
                         <tr>
-                            <td>@(TimeUtils.UnixTimeStampToDateTime(forecast.dt).ToShortDateString()), 
-                                @(TimeUtils.UnixTimeStampToDateTime(forecast.dt).ToShortTimeString())
+                            <td>@(TimeUtils.UnixTimeStampToDateTime(forecast.Dt).ToShortDateString()), 
+                                @(TimeUtils.UnixTimeStampToDateTime(forecast.Dt).ToShortTimeString())
                             </td>
-                            
-                            @*<td>@(TimeUtils.UnixTimeStampToDateTime(forecast.dt).ToLocalTime()</td> *@
-
-                            <td>@Math.Round(@forecast.main.temp)</td>
-                            <td>@Math.Round(@forecast.main.temp_min)</td>
-                            <td>@Math.Round(@forecast.main.temp_max)</td>
-                            <td>@Math.Round(@forecast.main.feels_like)</td>
+                            <td>@Math.Round(@forecast.Main.Temp)</td>
+                            <td>@Math.Round(@forecast.Main.Temp_Min)</td>
+                            <td>@Math.Round(@forecast.Main.Temp_Max)</td>
+                            <td>@Math.Round(@forecast.Main.Feels_Like)</td>
+                            <td>@Math.Round(@forecast.Main.Humidity)</td>
                             <td style="text-align: center;">
                                 <div style="
                                     background-color: #dee2e6;   
                                     border-radius: 5px;
                                     display: inline-block;">
-                                    <img src="https://www.openweathermap.org/img/wn/@(forecast.weather[0].icon).png" style="width:32px" />
+                                    <img src="https://www.openweathermap.org/img/wn/@(forecast.Weather[0].Icon).png" style="width:32px" />
                                 </div>  
                             </td>
                         </tr>

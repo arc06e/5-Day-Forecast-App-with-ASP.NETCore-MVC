@@ -27,6 +27,9 @@ namespace WeatherDashNine.Repository
 
         public async Task<CityModel> GetCityForecastAsync(string cityName)
         {
+
+           
+
                 var baseAddress = _configuration.GetValue<string>("openWeatherAPI");
                 string apiKey = _configuration.GetValue<string>("apiKey");
                 var queryString = $"data/2.5/forecast?q={cityName}&units=imperial&APPID={apiKey}";
@@ -37,7 +40,10 @@ namespace WeatherDashNine.Repository
 
                 if (response.IsSuccessStatusCode)
                 {
+
+                    
                     var content = await response.Content.ReadFromJsonAsync<CityModel>();
+                    content.Name = cityName;
                     return content;
                 }
             else
